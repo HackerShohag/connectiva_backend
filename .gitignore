@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel
+.vercel/
+
+# Logs
+*.log
+
+# Ignore data/model dumps by default...
+*.pkl
+*.model
+
+# ...BUT we must explicitly track our specific model for Vercel serverless deployment
+!data/connectiva_model.pkl
+
+# Temporarily generated files during local run
+/tmp/
+news_cache.json
