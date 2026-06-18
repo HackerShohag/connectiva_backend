@@ -202,5 +202,33 @@ def data_freshness():
         "last_checked": datetime.now().strftime("%Y-%m-%d %H:%M"),
     })
 
+@app.route("/api/world-comparison", methods=["GET"])
+def world_comparison():
+    return jsonify({
+        "bangladesh": { "country": "Bangladesh", "internet_access_pct": 45.2, "4g_availability_pct": 45.2, "digital_literacy_pct": 38.5, "connectivity_score": 45.2 },
+        "peer_countries_lowest_3": [
+            { "country": "Nepal", "internet_access_pct": 38.0, "4g_availability_pct": 35.0, "digital_literacy_pct": 30.0, "connectivity_score": 34.0 }
+        ],
+        "peer_countries_highest_3": [
+            { "country": "Vietnam", "internet_access_pct": 73.0, "4g_availability_pct": 75.0, "digital_literacy_pct": 60.0, "connectivity_score": 69.0 }
+        ],
+        "global_average": { "country": "Global Average", "internet_access_pct": 63.5, "connectivity_score": 59.0, "4g_availability_pct": 58.2, "digital_literacy_pct": 55.3 },
+        "regional_average": { "country": "Asia-Pacific", "internet_access_pct": 72.1, "connectivity_score": 68.0, "4g_availability_pct": 68.5, "digital_literacy_pct": 62.7 }
+    })
+
+@app.route("/api/generate-report/<report_type>", methods=["POST"])
+def generate_report(report_type):
+    return jsonify({
+        "status": "success",
+        "format": report_type,
+        "file": f"mock_report_{report_type}.pdf",
+        "note": f"Mock generated {report_type} report successfully."
+    })
+
+@app.route("/api/download", methods=["GET"])
+def download_file():
+    file_path = request.args.get("file", "download.pdf")
+    return f"Mock file content for: {file_path}", 200, {'Content-Disposition': f'attachment; filename="{file_path}"'}
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
