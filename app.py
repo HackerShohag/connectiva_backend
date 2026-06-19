@@ -184,6 +184,7 @@ def district_roadmap():
         },
         "btrc_data": {"total_subscribers_m": btrc.get("total_subscribers_m", 0), "2g_pct": btrc.get("2g_pct", 0), "3g_pct": btrc.get("3g_pct", 0), "4g_pct": btrc.get("4g_pct", 0), "5g_available": btrc.get("5g_available", False), "dominant_operator": get_dominant_operator(district, division), "operator_basis": "inferred from BTRC division mix and district market presence", "network_gen": network_gen},
         "nttn_data": {"ofc_km": round(nttn.get("ofc_km", 0), 1), "capacity_tbps": round(nttn.get("capacity_tbps", 0), 2), "unused_tbps": round(nttn.get("unused_tbps", 0), 2), "links": int(nttn.get("links", 0)), "pops": int(nttn.get("pops", 0)), "operators": nttn.get("operators", [])},
+        "bts_data": bts_data,
         "budget": budget, "indicator_trends": indicator_trends, "news": news
     })
 
